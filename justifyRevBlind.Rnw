@@ -1,0 +1,708 @@
+\documentclass[man,hidelinks,floatsintext,mask]{apa7}
+%\documentclass[man,hidelinks,floatsintext]{apa7}
+%\documentclass[doc,hidelinks,floatsintext]{apa7}
+%\documentclass[man,mask,hidelinks]{apa7}
+\usepackage[natbibapa]{apacite}
+%\usepackage{natbib}
+\bibliographystyle{apacite}
+\usepackage{enumitem}
+\usepackage[normalem]{ulem} 
+\usepackage{url}
+\usepackage{comment}
+\usepackage{makecell}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,fit,arrows.meta}
+\usetikzlibrary{shapes}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tabu, booktabs}
+\title{\textbf{Justifying responses affects the relationship \\ \vspace{.2cm} between confidence and accuracy }}
+\shorttitle{Justifying Responses and Confidence}
+\author{Daniel B.~Wright \qquad Sarah M. Wolf{}f}
+\affiliation{University of Nevada at Las Vegas}
+\authornote{\hspace{-30pt} Daniel Wright and Sarah Wolf{}f are in the Department of Educational Psychology, Leadership, and Higher Education, UNLV. Email: daniel.wright@unlv.edu or dbrookswr@gmail.com. Neither author is aware of any conflict of interest. Both authors contributed to all aspects of this research.}
+
+\abstract{How confident a student is about how they answer a question has important education implications. Participants answered ten mathematics questions and provided their estimates of how likely they got each individual item correct and how many, in total, they answered correctly. They were overconfident in these metacognitive judgments. Some of the participants were asked to justify why their answers were either correct or incorrect prior to making these judgements. This lowered their confidence ratings. They were still overconfident, but less than those in the control group. The instruction also affected the association between the confidence ratings and accuracy. No differences were observed between those asked to justify why their responses were correct versus those asked to justify why their responses were incorrect. {\color{red}Simply thinking about the accuracy of a response lowers people's confidence. This has important implications for understanding how we construct confidence judgements and within education how students' skepticism in their own responses during assessments and when studying.}}
+
+\begin{document}
+\maketitle
+
+<<echo=FALSE>>=
+opts_chunk$set(cache.path = "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2\\cache\\")
+@
+
+Metacognition can be thought of both as how people think about (and being conscious of) their cognition and a collection of processes used to regulate cognition. This internal feedback system can guide subsequent behaviors and self-control \citep{Tarricone2011}. There are several different aspects of this and it can be applied to several areas. Here we are interested how well our beliefs about our the accuracy of our cognitions correspond with the actual accuracy of our cognitions. Specifically, we examine how thinking about an answer affects this association and the overall levels of confidence.
+
+One fairly consistent finding in metacognition is that people are overconfident \citep{WinneAzevedo2022}. Overconfidence in decision making is important in many fields. For example, in business the phrases ``executive bias'' and ``CEO overconfidence'' refer to the overconfidence executives have in some of their decisions and this can lead to negative consequences for their companies \citep{KowalzickEA2023}. Other examples of overconfidence include among many gamblers \citep[e.g.,][]{ErceGalic2014}, stock investors \citep[e.g.,][]{ChenEA2007}, forensic experts \citep[e.g.,][]{Quigley-McBrideWells2018}, and the planning fallacy where people tend to think they will get things done before they do \citep[e.g.,][]{BuehlerGriffin2015}. Our interests are in the education arena. 
+
+
+Overconfidence plays an important role in test-taking \citep{SchrawEA2006}. Students who are overconfident may be less likely, for example, to check their answers \citep[e.g.,][]{Metcalfe2009,MetcalfeFinn2013}. They may also be less likely to allocate appropriate time to studying because they believe that they understand material \citep{MetcalfeKornell2005}. Overconfidence, when independently manipulated, influences study choices to a greater extent than performance itself \citep{BjorkEA2013, NelsonDunlosky1991}. This can lead to underachievement as people do not study the appropriate material for long enough time as would be optimal \citep{DunloskyRawson2012}. Overconfidence is especially true when test items are difficult, like many academic assessments. \citet{GigerenzerEA1991} argue we are more accurate in our predictions in most everyday situations where we tend to be more accurate. It has been argued that prediction, and failures in prediction, is how we navigate the uncertain world \citep{Clark2016}. Situations outside of formal academic assessments have been more important throughout the evolution of our species, which is why our metacognitions appear better adapted in these situations than for academic assessments \citep[e.g.,][]{GigerenzerEA1991}. 
+
+One aspect of metacognition relevant to education is how well calibrated students' confidence ratings are in test-like situations. {\color{red}Calibration refers to whether or not the person has a bias to be too confident or not confident enough.} We use two ways to calculate calibration: 1) comparing the individual's mean of the probability judgments for the individual test items with the mean number correct; and 2) comparing the individual's estimated percentage correct for the entire set of items with the actual percentage of correct responses. For most academic related tasks people over-estimate how accurate they are; they are overconfident. One account of this overconfidence is the confirmation bias, which in the current context means that when reflecting upon the accuracy of an answer, people tend to retrieve information about why this response may be accurate \citep{HartEA2009,KoriatEA1980,Peters2022}. While people tend to search for confirming information for the decision made, they do not readily search for reasons to counter to the decision. The preponderance of confirming information biases metacognition such that people are often more confident than appropriate.  People do not make optimal predictive judgments under uncertainty, but rather rely on heuristics and biases \citep[and much subsequent research]{KahnemanEA1982,TverskyKahneman1974}. \citet{Gigerenzer2000} refers to this as a cognitive illusion. Further discussion of calibration and biases can be found in \citet[and the papers reviewed there]{Alexander2013}. 
+
+Several studies have asked people to describe the processes used to reach their decisions and examined the impact on metacognitive judgments. \citet{LernerTetlock1999}) review research pre-1999 and found having people account for their response processes can positively affect their metacognitive judgments. {\color{red}For example, they comparing justifications pre versus post a decision and that the justifying tends to be to support the decision made less critical of alternatives. They argue this is part of our drive to appear consistent \citep[e.g.,][]{Leary1996}. Here we ask people after answered an item. \citeauthor{LernerTetlock1999} also discuss differences between process and outcome justification and note that justifying the process tends to improve performance more. Outcome justifications sometimes reduce overconfidence \citep[e.g.,][]{TetlockKim1987} but the results can be mixed. Other studies find few effects of justification. Consider \citet{HoffmanEA2017}, where participants answered questions on the toxicity of different insects. They found null effects for justification affected responding.}  
+
+Recent research with 4 to 9-year-olds suggests that asking students to ``stop and think'' before generating answers and assessing their confidence about a given response, improves accuracy in monitoring \citep{WackerRoebers2022}. Prompting students to justify their responses while test taking (engage in self-explanation) may encourage response revision, shown to increase scores \citep{HighamGerrard2005}. Further, when students are asked to rate how confident they are in their answers, an additional time window for reflection, they may make better revision decisions \citep{CouchmanEA2016}. Engaging with uncertainty, which involves a thoughtful assessment of one's own levels of confidence, can stimulate metacognitive thinking and lead to improved performance through a more nuanced and deliberate evaluation \citep[for a review, see][]{LyonsZelazo2011}. More work is needed in explaining this relationship and to examine if there are ways to increase metacognitive processing, such as prompting self-explanation, to improve metacognitive accuracy during test taking.  
+
+
+{\color{red}Our interests are both about theory and application. For theory, we are interested in whether getting people to think about the accuracy of their response and specifically about whether their responses were right or wrong, affects how they construct their metacognition.} Self-reflection plays an important role in metacognitive judgment making \citep{ZimmermanMoylan2009}. Self-explanation involves reflection on the learning process. Self-explanation's effects on improving various learning outcomes have been shown across different content materials within various task domains \citet{DunloskyEA2016}. \citet[see also \citeauthor{HackerEA2008}, \citeyear{HackerEA2008}]{HackerBol2019} discuss several studies showing the complex interplay among reflection, metacognition, and performance. 
+
+Our applied interest is how our intervention may affect confidence during an assessment and how self-explanation may contribute to test taker performance and metacognition. To examine this interplay we prompt test-takers to think about whether their response may be accurate or inaccurate affects the relationship between estimated and actual accuracy. 
+
+{\color{red}The literature states that when justifying an answer people's natural tendency to come up with reasons for why they are accurate. If information is easily accessed this may raise confidence, but if it is not easily accessible or if contrary information is accessed, this could cause confidence to drop. One concern was whether participants might interpret our request to justify why an answer is correct to raise their confidence (i.e., demand characteristics). We also have a condition where participants are asked to justify why they may be incorrect. This helps us to address whether demand characteristics may be driving changes in confidence ratings.} 
+
+We have multiple research questions. First, does prompting test takers to think about either getting an answer right or an answer wrong affect their test scores? {\color{red}Accessing information increases learning \citep[i.e., the testing effect][]{KarpickeRoediger2008,RoedigerEA2010}, justify responses is unlikely to increase performance substantially.} Second, does the condition affect the confidence the test taker has. Third, we predict that there will be overconfidence, but replicating \citet{GigerenzerHoffrage1995} we expect it to be less when ask participants to estimate how many they got right out of ten. Finally, we will examine the association between confidence and accuracy, and examine if this association differs by condition. 
+
+The study involves participants answering ten college-entrance mathematics questions, rating their confidence in these, and in two justify conditions being asked either to say why they might have answered the question correctly or incorrectly.
+
+
+\section{Methods}
+
+\subsection{Sample}
+<<echo=FALSE,message=FALSE>>=
+library(pwr)
+sugg <- pwr.anova.test(k=3,f=.25,sig.level=.05,power=.8)$n
+@
+
+Amazon Mechanical Turk (MTurk) was used to recruit participants, who were directed to a survey housed on a Qualtrics server. Power analysis was used to help to decide the number of participants to recruit. Many of the comparisons are whether the mean of a variable differs among the three conditions. An ANOVA is assumed for the power analysis. The \texttt{pwr.anova.test} function from \textbf{pwr} \citep{pwr} with the following values: $\alpha = .05$, $f = .25$, and power ($1 - \beta$) of .80, was used. The suggested sample size was \Sexpr{round(sugg)} per group, or \Sexpr{3*round(sugg)} in total.  The study was conducted during the COVID lockdown. The survey was terminated when 158 had completed the survey. 
+
+MTurk requires their ``workers'' (our participants) to be US citizens over 18 years-old for payment purposes. In addition, participants here were restricted to (self-reported) high school graduates who had taken part in at least 100 previous MTurk tasks with at least a 90\% satisfaction rating. \citet[Ch.~2]{SheehanPittman2016} discuss characteristics of typical MTurk samples: MTurk samples tend to be younger than the general population but older than university student samples, have a range of education levels, and approximately half are female. Overall, they tend to be more diverse than the typical psychology laboratory sample. Demographics for this sample were not acquired.  
+
+Participants were told the study would take approximately 20 minutes to complete (the observed mean time to complete was just over 18 minutes). To encourage thoughtful performance on the math questions, participants were told that they would be paid 1-2\$, depending on their performance on these questions. In accordance with IRB, all were paid \$2.
+
+
+<<loadPackages,echo=FALSE,message=FALSE>>=
+# This is where file located on computer
+setwd( "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2")
+load("justify.RData")
+pre <- table(justify$justify)
+@
+
+
+<<removefast,message=FALSE,echo=FALSE>>=
+times <- with(justify,cbind(Jtime05_Page.Submit,Jtime07_Page.Submit,Jtime08_Page.Submit,
+        Jtime09_Page.Submit,Jtime10_Page.Submit,Jtime12_Page.Submit,Jtime13_Page.Submit,
+        Jtime16_Page.Submit,Jtime26_Page.Submit,Jtime27_Page.Submit))
+totqtimes <- apply(times,1,sum)
+tt <- cbind(times,totqtimes)
+
+thresh <- 100
+outfortime <- table(totqtimes < thresh)
+
+justify <- justify[totqtimes > thresh,]
+post <- table(justify$justify)
+times <- times[totqtimes > thresh,]
+totqtimes <- totqtimes[totqtimes > thresh]
+# justify 0 is control, 1 is correct, and 2 is incorrect
+@
+
+{\color{red}Two exclusion criteria were used: duplicate IP addresses and responses that were very rapid. In regards to duplicate IP addresses, although each MTurk worker needs to have a separate account and therefore a separate social security number, someone could use their own account and someone else's account. For this reason only the first attempt from an IP address was used. The subsequent attempts could have been done by housemates, so all attempts were paid. Four were excluded for being duplicate IP addresses, leaving 154. 
+The second exclusion criterion removes those who did not spend what is thought to be adequate time to answer the items thoughtfully. This is for the time to answer the individual math items, not the time to make the justifications nor the confidence ratings. Item response time was the duration between when the item was shown on the screen and when the participant submits their answer. \citet{Wright2016tarre} reports that ACT Math item developers said that 10 seconds is approximately the minimum amount of time required to provide a thoughtful response for any item. Twelve people averaged less that and are excluded, leaving 142 participants. }
+
+
+\subsection{Design \& Materials}
+Participants were randomly allocated to one of three conditions of this between-subject design: a control condition, a justify why accurate condition, and a justify why inaccurate condition. Once the exclusion criteria were applied, the numbers in these groups were: 51 control, 47 justify-correct, 44 justify-incorrect. {\color{red}Those in the two correct justify condition were told before answering any of these items that they would be asked to justify why they might be correct for each item, and those in the incorrect justify condition were told that they would be asked to justify why they might be incorrect for each item. They were told they would get these prompts regardless of whether their response was accurate or not.}
+
+Participants were presented with ten math items. The mathematics items along with some descriptive statistics are shown in the supplementary materials. These items are from past ACT college admissions practice test materials. %removed the comments for this
+All are five alternative forced choice questions and the correct percentages for each item were above  20\%. 
+
+After each of ten items is answered those in the justify conditions were asked either why their answer may have been accurate or why it may have been inaccurate.  In the justify correct condition they were asked to:
+
+\begin{quote}
+Briefly say why you may have made the CORRECT choice.
+\end{quote}
+
+\noindent and in the justify incorrect condition they were asked to:
+
+\begin{quote}
+Briefly say why you may have made the INCORRECT choice.
+\end{quote}
+
+
+\noindent If they were asked to justify why they were incorrect for question 1, they were asked this for all of the questions. The allocation was random, so is independent of whether a response was accurate or inaccurate. {\color{red}Therefore, somebody in the justify incorrect condition might be certain that they were correct, and in some cases they were.} %Many just wrote that they were not incorrect. The purpose of the experimental conditions was to get participants to think about the accuracy of their responses and the distinction between the two experimental conditions was to prompt this thinking in one direction or the other.
+{\color{red}We did not require participants to write a minimum number of words or characters. This resulted in many brief ones that would not be suitable for analyses (e.g., ``got right,'' ``same as others''), so these are not analyzed.}
+
+All participants then provided a confidence rating for that item. In the control condition there was no intervening material between the item and the confidence question. The question was: ``What is the probability, from 0\% to 100\%, that you think that you got the question right. 20\% would mean that you were guessing randomly from the 5 options.'' They were presented is a 0\%-100\% slider with each 10\% labeled and verbal anchors ``Definitely Wrong'' and ``Definitely Right.'' The slider's starting position was 0\% for all of these questions. 
+
+
+<<loadpcks,echo=FALSE,message=FALSE,warning=FALSE>>=
+library(car)
+library(lme4)
+library(mirt)
+library(xtable)
+library(splines)
+library(Hmisc)
+library(boot)
+library(pwr)
+library(psych)
+library(EnvStats)
+@
+
+<<makeitems,echo=FALSE>>=
+items <- with(justify,
+      cbind(Jq05,Jq07,Jq08,Jq09,Jq10,Jq12,Jq13,Jq16,Jq26,Jq27))
+colnames(items) <- paste0("item",1:10)
+group <- justify$group <- as.factor(justify$justify) #same name
+contrasts(group) <- matrix(c(-2,1,1,0,-1,1),ncol=2)
+groupvar <- cbind(group!=0,group==2)
+@
+
+After completing the ten math questions and their associated confidence ratings, participants were asked:
+
+\begin{quote}
+Thank you for answering the math questions. We have some questions about what you thought about the task.  How many out of 10 do you think that you got correct?
+\end{quote}
+
+\noindent with a 0 -- 10 slider without verbal anchors.  
+
+
+This was followed by three questions about interests in mathematics for exploratory purposes, but the results are not reported here (they are discussed in the Supplementary Materials). Participants were thanked, given a unique identifier, and returned to MTurk to receive payment. The study received approval from the UNLV IRB (1563587-3). The questions were presented in Qualtrics and access to this form is available from the authors. {\color{red}The data and their key are on GitHub. See \url{https://github.com/dbrookswr/metac/justifyReadMe}. In addition to the data, the key, and the Supplementary Material covering response times and the interest question, there is a \texttt{knitr} \citep{knitr} document, combining \LaTeX{} and \textsf{R} code, for all the analyses and to create the final submitted document.} 
+
+
+%These are the interest questions. These are discussed in the Supplementary Materials.
+\begin{comment}
+\begin{enumerate}
+\item We are interested in how much people think about how they are answering questions, called metacognition, during quizzes. Examples including thinking why you believe an individual alternative is right or wrong, and thinking about how to answer a question.  Using the following scale, how much metacognitive thinking were you doing during the task? (0 to 100, hardly any \dots{} a lot)
+\item How interested are you in mathematics? (0 -- 100, not interested \dots{} very interested)
+\item Some people feel like taking a quiz helps them to learn a topic. Some people do not feel this. Do you feel taking this short quiz helped with your mathematical knowledge?  (0--100, Knowledge decreased \dots{}  no effect \dots{}   Knowledge increased)
+\end{enumerate}
+\end{comment}
+
+
+<<key,echo=FALSE>>=
+key <- c("D","B","D","B","B","C","A","E","C","A")
+itemright <- matrix(nrow=nrow(items),ncol=ncol(items))
+for (i in 1:10)
+  itemright[,i] <- items[,i] == key[i]
+class(itemright) <- "numeric"
+colnames(itemright) <- paste0("Item",1:10,"Right")
+mitemright <- colMeans(itemright)
+cim <- function(x) sprintf("%1.2f",t.test(x)$conf.int)
+cip <- function(x) paste0("(",
+  sub("0.",".",sprintf("%1.2f",prop.test(sum(x==1),length(x))$conf.int[1])),
+    ", ", 
+  sub("0.",".",sprintf("%1.2f",prop.test(sum(x==1),length(x))$conf.int[2])),
+  ")")
+itemAns <- cbind(items,group)
+itemrightg <- cbind(itemright,group)
+write.csv(itemrightg,"WWmathques.csv") 
+write.csv(itemAns,"WWmathquesAns.csv") 
+@
+
+\subsection{Data Analysis Plan}
+\begin{enumerate}[noitemsep]
+\item {\color{red}The \textsf{R} package \textbf{mirt} will be used to make sure that the ten items measure the same construct. One and two dimensional item response theory (IRT) models will be compared.} While the focus of this paper is not on the psychometric properties of these items, it is important to explore the measurement quality for this sample in case any items appear ill suited (e.g., people who get most others right being more likely to make an error on an item than those who get most others wrong). {\color{red}
+\item We do not predict that the justify conditions should affect the probability of correctly answering an item enough to be detected. When comparing the three conditions, two questions are asked (i.e., two planned contrasts): does being in either justify condition differ from the control condition, and does being asked to say why your answer may have been correct differ from being asked why your answer may have been incorrect. 
+\item Response times were recorded for answering the math questions for one of the exclusion criteria. We made no predictions about whether condition would affect these. The geometric means are compared using an ANOVA. We found no significant differences and for spaces reasons these are placed in the Supplementary Materials on GitHub.}
+\item There are several ways to examine the confidence-accuracy relationship \citep[e.g.,][]{DunloskyEA2016}. First we examine calibration \citep{DunloskyMetcalfe2009}, whether the participants were over-confident in their judgments. We calculate an overconfidence based on the mean item estimate minus the actual number correct and the set estimate minus the actual number correct. We compare these with a $2 \times 3$ mixed ANOVA for the three conditions. 
+\item The next way we explore the confidence-accuracy relationship is by looking at their association within person. This can be done by looking at how the individual item confidence judgments relate to the accuracy of the participant getting that item correct. There is much debate about how to this and several approaches \citep[e.g.,][their Table 2.3]{DunloskyEA2016}. Many calculate a single value for each individual, for example Goodman and Kruskal's (\citeyear{GoodmanKruskal1954,GoodmanKruskal1979}) $\gamma$ or Higham and Higham's (\citeyear{HighamHigham2019}) adjusted $\gamma$. However, \citet{WrightEA2003orb1} argued against calculating an estimate for each person individually, as done with both these $\gamma$s, and instead use procedures which share information from the other people to create better estimates \citep[see][]{EfronMorris1977}. An example of this is multilevel logistic regression and \citetext{WrightEA2003orb1} argued for this to examine the association between confidence and accuracy. More recent authors continue this recommendation \citet[e.g.,][]{MurayamEA2014}. Here We use a cross-classified multilevel logistic model \citep[e.g.,][]{Goldstein2011} that is estimated using the \textsf{R} package \textbf{lme4} \citep{lme4}. 
+
+\end{enumerate}
+
+\section{Results}
+
+
+<<echo=FALSE>>=
+opts_chunk$set(cache.path = "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2\\cache")
+@
+<<irts, cache=TRUE,results="hide",echo=FALSE,message=FALSE>>=
+m1.1 <- mirt(itemright,1,"Rasch")
+m1.2 <- mirt(itemright,1,"2PL")
+m1.3 <- mirt(itemright,1,"3PL",
+           technical=list(NCYCLES=5000,theta_lim=c(-5,5)))
+m2.2 <- mirt(itemright,2,"2PL",TOL=.001,
+           technical=list(NCYCLES=5000,theta_lim=c(-5,5)))
+m2.3 <- mirt(itemright,2,"3PL",TOL=.001,
+           technical=list(NCYCLES=10000,theta_lim=c(-5,5)))
+@
+
+<<message=FALSE,results='hide',echo=FALSE,warning=FALSE>>=
+t1 <- anova(m1.1,m1.2)
+t2 <- anova(m1.2,m1.3)
+t3 <- anova(m1.2,m2.2)
+t4 <- anova(m1.3,m2.3)
+@
+
+<<message=FALSE,echo=FALSE,warning=FALSE>>=
+dd <- alpha(cor(itemright),n.obs=nrow(itemright))
+nright <- rowSums(itemright)
+f1pl <- fscores(m1.1)
+f2pl <- fscores(m1.2)
+@
+
+
+One-, two-, and three-parameter (1PL, 2PL, 3PL, respectively) IRT models for the one dimensional IRT model for the ten items and the 2PL and 3PL models for the two dimensional IRT model were estimated using \textbf{mirt} \citep{mirt}. Their BICs for the one dimensional models were: \Sexpr{sprintf("%0.3f",anova(m1.1)$BIC)}, \Sexpr{sprintf("%0.3f",anova(m1.2)$BIC)}, \Sexpr{sprintf("%0.3f",anova(m1.3)$BIC)}, respectively, so based on these the 1PL is preferred. The 2PL and 3PL for the two dimensional models had higher BICs than their one dimensional counterparts: BICs of \Sexpr{sprintf("%0.3f",t3$BIC[2])} and \Sexpr{sprintf("%0.3f",t4$BIC[2])}, respectively. All the items had positive associations with the ability estimate. There is no indication that any item was poor and the scale appears uni-dimensional. Cronbach's standardized $\alpha$ was \Sexpr{sub("0.",".",sprintf("%0.3f",dd$total$raw_alpha))}. Given the fit of the one dimensional 1PL model, the number correct will be used to estimate accuracy.
+
+
+<<echo=FALSE>>=
+propright <- rowMeans(itemright)
+confpreds <- with(justify,
+      cbind(Jconf05_1,Jconf07_1,Jconf08_1,Jconf09_1,Jconf10_1,Jconf12_1,
+            Jconf13_1,Jconf16_1,Jconf26_1,Jconf27_1))/100
+meanconf <- rowMeans(confpreds)
+freqpreds <- justify$Q1341/10
+#sum(is.na(propright))
+#table(propright)
+rmx <- tapply(propright,group,mean)
+rsd <- tapply(propright,group,sd)
+cmx <- tapply(meanconf,group,mean)
+csd <- tapply(meanconf,group,sd)
+fmx <- tapply(freqpreds,group,mean)
+fsd <- tapply(freqpreds,group,sd)
+@
+
+\begin{table}[!ht]
+\centering
+\caption{Means and standard deviations for the proportion correct, mean confidence score, and the frequency estimate of number correct. All values are scaled to be from 0 to 1.} \label{tab:meanssds} \medskip
+
+\begin{tabular}{l cccccc}
+& \multicolumn{2}{c}{Correct} & \multicolumn{2}{c}{Item confidence} & \multicolumn{2}{c}{Set frequency} \\
+Condition & $\mathit{mean}$ & $\mathit{sd}$ & 
+  $\mathit{mean}$ & $\mathit{sd}$ & $\mathit{mean}$ & $\mathit{sd}$ \\ \hline
+Control & \Sexpr{sub("0.",".",sprintf("%0.3f",rmx[1]))} & \Sexpr{sprintf("%0.3f",rsd[1])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",cmx[1]))} & \Sexpr{sprintf("%0.3f",csd[1])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",fmx[1]))} & \Sexpr{sprintf("%0.3f",fsd[1])} \\
+Justify correct & \Sexpr{sub("0.",".",sprintf("%0.3f",rmx[2]))} & \Sexpr{sprintf("%0.3f",rsd[2])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",cmx[2]))} & \Sexpr{sprintf("%0.3f",csd[2])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",fmx[2]))} & \Sexpr{sprintf("%0.3f",fsd[2])} \\
+Justify incorrect & \Sexpr{sub("0.",".",sprintf("%0.3f",rmx[3]))} & \Sexpr{sprintf("%0.3f",rsd[3])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",cmx[3]))} & \Sexpr{sprintf("%0.3f",csd[3])} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",fmx[3]))} & \Sexpr{sprintf("%0.3f",fsd[3])} \\ \hline
+Overall & \Sexpr{sub("0.",".",sprintf("%0.3f",mean(propright)))} & \Sexpr{sprintf("%0.3f",sd(propright))} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",mean(meanconf)))} & \Sexpr{sprintf("%0.3f",sd(meanconf))} &
+          \Sexpr{sub("0.",".",sprintf("%0.3f",mean(freqpreds)))} & \Sexpr{sprintf("%0.3f",sd(freqpreds))} \\ \hline
+\end{tabular}
+\end{table}
+
+<<ANOVA,echo=FALSE>>=
+m0 <- lm(propright ~ 1)
+g12 <- group != 0
+g2 <- group == 2
+m1 <- update(m0, .~. + g12)
+
+m2 <- update(m1, .~. + g2)
+anlm <- anova(m0,m1,m2)
+@
+
+<<echo=FALSE>>=
+right <- c(itemright)
+timeVector <- c(times)
+itemno <- rep(1:10,each=nrow(itemright))
+subno <- rep(1:nrow(itemright),10)
+groupno <- rep(group,10)
+group12 <- groupno != 0
+group2 <- groupno == 2
+@
+
+<<mlright,cache=FALSE,echo=FALSE,eval=FALSE>>=
+#This repeated using multilevel models finds the same
+m0 <- glmer(right ~ 1 + (1|itemno) + (1|subno),family="binomial")
+m1 <- update(m0, .~. + group12)
+m2 <- update(m1, .~. + group2)
+m2a <- update(m0, .~. + groupno)
+anovasml <- anova(m0,m1,m2,m2a)
+@
+
+
+The proportion correct was calculated for each participant. The means and standard deviations are shown in the first two columns of Table~\ref{tab:meanssds}. First, the control group is compared with the two justify groups and then the two justify groups are compared. Both of these contrasts were non-significant: 
+$F(1, 126 = \Sexpr{sprintf("%0.3f",anlm$F[2])}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",anlm$Pr[2]))}$, change in $R^2 = .011$ and 
+$F(1, \Sexpr{round(anlm$Res.Df[3])}) = \Sexpr{sprintf("%0.3f",anlm$F[3])}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",anlm$Pr[3]))}$, change in $R^2 < .001$, for the two contrasts respectively. 
+
+%omitted to save space
+%Similar non-significant findings were found using the cross-classified method. The BICs for the null model, the model that compares the control condition and justify conditions, and the one additionally including the contrast between the two justify conditions were: \Sexpr{sprintf("%0.3f",anovasml$BIC[1])}, \Sexpr{sprintf("%0.3f",anovasml$BIC[2])}, and \Sexpr{sprintf("%0.3f",anovasml$BIC[3])}. The smallest BIC value is preferred, thus supporting the model not taking into account groups. The contrasts were also statistically non-significant: $\chi^2 (1) = \Sexpr{sprintf("%0.3f",anovasml$Chisq[2])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anovasml$Pr[2]))}$ for the first contrast and $\chi^2 (1) = \Sexpr{sprintf("%0.3f",anovasml$Chisq[3])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anovasml$Pr[3]))}$ for the second contrast. 
+
+
+<<timebygroup,message=FALSE,eval=FALSE,echo=FALSE>>=
+library(e1071)
+par(mfrow=c(2,2))
+hist(totqtimes)
+qqnorm(totqtimes);qqline(totqtimes)
+skewness(totqtimes)
+hist(log(totqtimes))
+qqnorm(log(totqtimes));qqline(log(totqtimes))
+skewness(log(totqtimes))
+
+summary(lm(totqtimes ~ g12 + g2))
+summary(lm(log(totqtimes) ~ g12 + g2))
+tapply(totqtimes,group,mean)
+#a few ways for the geometric mean, just while I finish coffee
+tapply(log(totqtimes),group,mean)
+geomean <- function(x) exp(mean(log(x)))
+tapply(totqtimes,group,geomean)
+exp(tapply(log(totqtimes),group,mean))
+
+@
+<<mltime,cache=FALSE,echo=FALSE,eval=FALSE>>=
+#This repeated using multilevel models finds the same
+skewness(timeVector); skewness(log(timeVector))
+tapply(timeVector,groupno,mean)
+exp(tapply(log(timeVector),groupno,mean))
+m0 <- lmer(timeVector ~ 1 + (1|itemno) + (1|subno))
+m1 <- update(m0, .~. + group12)
+m2 <- update(m1, .~. + group2)
+m2a <- update(m0, .~. + groupno)
+anovasml <- anova(m0,m1,m2,m2a)
+anovasml
+@
+
+\clearpage
+
+
+Confidence is measured in two ways. Participants provided a confidence rating for each individual item and at the end of the ten math items they were asked to estimate how many they thought that they had answered correctly. Table~\ref{tab:meanssds} shows the means and standard deviations for these for the entire sample in the final row. Both confidence measures have higher means than actual performance and the set frequency estimates are closer to the actual proportion correct than the means of the item estimates. 
+
+<<echo=FALSE>>=
+itempreds <- colMeans(confpreds)
+partpreds <- rowMeans(confpreds)
+partvals <- cbind(propright,partpreds,freqpreds)
+allvals <- c(propright,partpreds,freqpreds)
+meas <- rep(1:3,each=length(propright))
+mconffreq <- meas != 1
+mfreq <- meas == 3
+allgroups <- rep(group,each=3)
+g12 <- allgroups != 0
+g2 <- allgroups == 2
+subno <- rep(1:length(propright),each=3)
+@
+
+<<echo=FALSE>>=
+itemoc <-  partpreds - propright
+freqoc <-  freqpreds - propright
+titemoc <- t.test(itemoc)
+tfreqoc <- t.test(freqoc)
+
+g0.12 <- group != 0
+@
+
+<<message=FALSE,warning=FALSE,echo=FALSE>>=
+itemoc <-  partpreds - propright
+freqoc <-  freqpreds - propright
+titemoc <- t.test(itemoc)
+tfreqoc <- t.test(freqoc)
+
+grlong <- rep(group,3)
+scores <- c(propright,partpreds,freqpreds)
+subno <- rep(1:length(propright),3)
+meas <- rep(c("right","item","freq"),each=length(propright))
+longd <- data.frame(subno,grlong,scores,meas)
+library(afex)
+aovmod <- aov_ez("subno","scores",longd,"grlong","meas",type="3",
+                 anova_table=list(correction="GG", es=c("ges","pes")))
+library(lsmeans)
+
+grlong2 <- rep(group,2)
+contrasts(grlong2) <- matrix(c(-2,1,1,0,-1,1),ncol=2)
+scores2 <- c(partpreds-propright,freqpreds-propright)
+subno2 <- rep(1:length(propright),2)
+meas2 <- rep(c("itemoc","freqoc"),each=length(propright))
+longd2 <- data.frame(subno2,grlong2,scores2,meas2)
+
+# justify 0 is control, 1 is correct, and 2 is incorrect
+
+aovmod2 <- aov_ez("subno2","scores2",longd2,"grlong2","meas2",type="3",
+                 anova_table=list(correction="GG", es=c("ges","pes")))
+tabx <- summary( aovmod2)$univariate.tests
+
+library(lsmeans)
+ms <- lsmeans(aovmod2, specs = "grlong2")
+@
+
+
+<<results='hide',echo=FALSE>>=
+# the print function is needed to create the object, which is why this is
+# in a separate block, and the results hidden.
+cons <- print(contrast(ms, list(CvJ = c(-1,.5,.5), JCvJIc=c(0,-1,1))))
+ci95 <- function(x,lt1=FALSE){
+  cis <- t.test(x)$conf.int
+  ifelse(lt1,
+    ci95 <- c(sprintf("%0.3f",cis[1]),
+              sprintf("%0.3f",cis[2])),
+    ci95 <- c(sub("0.1",".",sprintf("%0.3f",cis[1])),
+              sub("0.1",".",sprintf("%0.3f",cis[2]))))
+}
+@
+
+
+<<echo=FALSE>>=
+m123 <- tapply((itemoc+freqoc)/2,group,mean)
+@
+
+The means for item overconfidence are: \Sexpr{round(-100*(rmx[1] - cmx[1]))}\%  too high for control, \Sexpr{round(-100*(rmx[2] - cmx[2]))}\% for justify incorrect, and \Sexpr{round(-100*(rmx[3] - cmx[3]))}\% for justify correct. For the set judgment overconfidence these values were: \Sexpr{round(-100*(rmx[1] - fmx[1]))}\%  too high for control, \Sexpr{round(-100*(rmx[2] - fmx[2]))}\% for justify incorrect, and \Sexpr{round(-100*(rmx[3] - fmx[3]))}\% for justify correct.  Overconfidence variables were calculated for item overconfidence (item value minus number correct) and set overconfidence (set value minus number correct). These two variables were included in a mixed $2 \times 3$ ANOVA with the between-subject factor being the three groups. The \textbf{afex} \citep[with Type 3 sums of squares]{afex} and \textbf{lsmeans} \citep[for testing contrasts]{lsmeans} packages were used. 
+
+The interaction was non-significant:  
+$F(\Sexpr{tabx[4,2]},\Sexpr{tabx[4,4]})=\Sexpr{sprintf("%0.3f",tabx[4,5])}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",tabx[4,6]))},   \eta_g^2 \Sexpr{print(aovmod2)$ges[3]}$. The main effect between the two confidence measures was significant, 
+$F(\Sexpr{tabx[3,2]},\Sexpr{tabx[3,4]})=\Sexpr{sprintf("%0.3f",tabx[3,5])}, p=\Sexpr{sub("0.",".",sprintf("%0.3f",tabx[3,6]))},   \eta_g^2 = \Sexpr{print(aovmod2)$ges[2]}$ with the mean for the item estimates showing overconfidence of \Sexpr{sprintf("%0.3f",mean(itemoc))} and the mean for the set estimate showing overconfidence of \Sexpr{sprintf("%0.3f",mean(freqoc))}. The $\eta_g^2$ is small and yet the difference is statistically significant because these measures are highly correlated: \Sexpr{sub("0.",".",sprintf("%0.3f",cor(itemoc,freqoc)))}. 
+
+ The primary interest is with the planned contrasts. The difference between the control and the two justify conditions was: $t(\Sexpr{cons$df[1]}) = \Sexpr{sprintf("%0.3f",abs(cons$t.ratio[1]))}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",cons$p.value[1]))}$ with the control mean of \Sexpr{sub("0.",".",sprintf("%0.3f",m123[1]))} and the mean for the justify conditions being \Sexpr{sub("0.",".",sprintf("%0.3f",(m123[2]+m123[3])/2))}. The second contrast shows that the difference between the two justify conditions was non-significant: $t(\Sexpr{cons$df[2]}) = \Sexpr{sprintf("%0.3f",abs(cons$t.ratio[2]))}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",cons$p.value[2]))}$ with means of \Sexpr{sub("0.",".",sprintf("%0.3f",m123[2]))} and \Sexpr{sub("0.",".",sprintf("%0.3f",m123[3]))} for the justify correct and justify incorrect conditions respectively.
+
+
+<<echo=FALSE>>=
+lb <- function(x,lev=.95)
+  t.test(x,conf.level=lev)$conf.int[1]
+ub <- function(x,lev=.95)
+  t.test(x,conf.level=lev)$conf.int[2]
+ocmx <- tapply(itemoc,group,mean)
+oclb <- tapply(itemoc,group,lb)
+ocub <- tapply(itemoc,group,ub)
+
+djmx <- tapply(freqoc,group,mean)
+djlb <- tapply(freqoc,group,lb)
+djub <- tapply(freqoc,group,ub)
+corstat <- cor.test(freqpreds,partpreds)
+@
+
+<<echo=FALSE>>=
+group12 <- group != 0
+group2 <- group == 2
+m0 <- lm(itemoc ~ 1)
+m1 <- update(m0, .~. + group12)
+cim1 <- confint(m1)
+m2 <- update(m1, .~. + group2)
+cim2 <- confint(m2)
+m2a <- update(m0, .~. + as.factor(group))
+anconf <- anova(m0,m1,m2,m2a)
+f0 <- lm(freqoc  ~ 1)
+f1 <- update(f0, .~. + group12)
+cif1 <- confint(f1)
+f2 <- update(f1, .~. + group2)
+cif2 <- confint(f2)
+f2a <- update(f0, .~. + as.factor(group))
+anfreq <- anova(f0,f1,f2,f2a)
+@
+
+%omitted for space
+%One question is whether the amount of overconfidence, measured in both of these ways, differs for the three conditions. For both ways we first compare the control condition to the two justify conditions, and then compare the two justify conditions. For overconfidence measures using the mean item confidence, the bias was statistically significantly less for the justify conditions than for the control condition: $\beta = \Sexpr{sprintf("%0.3f",coef(m1)[2])}$, 95\% CI = (\Sexpr{sprintf("%0.3f",cim1[2,1])}, \Sexpr{sprintf("%0.3f",cim1[2,2])}), $F(1, \Sexpr{anconf[2,1]}) = \Sexpr{sprintf("%0.3f",anconf[2,5])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anconf[2,6]))}$. The two justify conditions did not differ significantly from each other: $\beta = \Sexpr{sprintf("%0.3f",coef(m2)[3])}$, 95\% CI = (\Sexpr{sprintf("%0.3f",cim2[3,1])}, \Sexpr{sprintf("%0.3f",cim2[3,2])}), $F(1, \Sexpr{anconf[3,1]}) = \Sexpr{sprintf("%0.3f",anconf[3,5])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anconf[3,6]))}$. The slight negative value of $\beta$ means that for these data the bias was slightly more for those asked to justify why they could be correct than those asked to justify why they could be incorrect.
+
+%When measuring overconfidence with the frequency question the group differences were not statistically significant. The statistics for the comparison between the control condition and the justify conditions were: $\beta = \Sexpr{sprintf("%0.3f",coef(f1)[2])}$, 95\% CI = (\Sexpr{sprintf("%0.3f",cif1[2,1])}, \Sexpr{sprintf("%0.3f",cif1[2,2])}), $F(1, \Sexpr{anfreq[2,1]}) = \Sexpr{sprintf("%0.3f",anfreq[2,5])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anfreq[2,6]))}$. The two justify conditions did not differ significantly: $\beta = \Sexpr{sprintf("%0.3f",coef(f2)[3])}$, 95\% CI = (\Sexpr{sprintf("%0.3f",cif2[3,1])}, \Sexpr{sprintf("%0.3f",cif2[3,2])}), $F(1, \Sexpr{anfreq[3,1]}) = \Sexpr{sprintf("%0.3f",anfreq[3,5])}, p =  \Sexpr{sub("0.",".",sprintf("%0.3f",anfreq[3,6]))}$.
+
+<<bplot,fig.cap="Means and 95\\% confidence intervals of overconfidence based on the mean of item confidence judgments and the frequency estimate for the three groups.",fig.align="center",fig.height=4,out.height="4in",fig.width=5,out.width="5in",echo=FALSE,eval=FALSE>>=
+par(mar=c(4,4,1,1))
+bp <- barplot(cbind(ocmx,djmx),beside=TRUE,las=1,yaxt='n',xaxt='n',
+               ylim=c(-.04,.3),col=c("grey55","grey75","grey95"),
+               ylab=expression(mean %+-% 95 * symbol("\045") ~ ~ CI))
+
+#              ylab=expression(mean %+-% 95 symbol("\045") ~ ~ CI))
+abline(h=0,col="grey40")
+axis(2,c(0,.1,.2,.3),c(0,.1,.2,.3),las=1)
+axis(1,c(2.5,6.5),c("Confidence","Frequency"),tick=FALSE,line=-1.6)
+axis(1,c(2.5,6.5),c("- prop. correct","- prop. correct"),tick=FALSE,line=-0.6)
+errbar(bp,cbind(ocmx,djmx),cbind(ocub,djub),cbind(oclb,djlb),
+       cap=0.01,pch=".",add=TRUE)
+legend("topright",c("Control","Justify Correct","Justify Incorrect"),
+       fill=c("grey55","grey75","grey95"),bty='n',cex=.9)
+@
+
+
+<<echo=FALSE>>=
+# propright, meanconf, freqpreds
+apar <- function(x) sub("0.",".",sprintf("%0.3f",x))
+
+citcontrol <- apar(cor(propright[allgroups==0],meanconf[allgroups==0],use="pairwise.complete.obs"))
+citjright <- apar(cor(propright[allgroups==1],meanconf[allgroups==1],use="pairwise.complete.obs"))
+citjwrong <- apar(cor(propright[allgroups==2],meanconf[allgroups==2],use="pairwise.complete.obs"))
+
+setcontrol <- apar(cor(propright[allgroups==0],freqpreds[allgroups==0],use="pairwise.complete.obs"))
+setjright <- apar(cor(propright[allgroups==1],freqpreds[allgroups==1],use="pairwise.complete.obs"))
+setjwrong <- apar(cor(propright[allgroups==2],freqpreds[allgroups==2],use="pairwise.complete.obs"))
+
+#citcontrol;citjright;citjwrong;setcontrol;setjright;setjwrong
+@
+
+<<echo=FALSE>>=
+corv <- function(x,y,g)
+  sub("0.",".",sprintf("%0.3f",cor(x[group==g],y[group==g])))
+@
+
+<<echo=FALSE>>=
+library(cocor)
+# between groups
+just <- data.frame(propright,partpreds,freqpreds,group)
+gcon1 <- list(just[just$group==0,],just[just$group!=0,])
+c1pp <- cocor(~ propright + partpreds | propright + partpreds, data = gcon1)@fisher1925
+c1pf <- cocor(~ propright + freqpreds | propright + freqpreds, data = gcon1)@fisher1925
+gcon2 <- list(just[just$group==1,],just[just$group==2,])
+c2pp <- cocor(~ propright + partpreds | propright + partpreds, data = gcon2)@fisher1925
+c2pf <- cocor(~ propright + freqpreds | propright + freqpreds, data = gcon2)@fisher1925
+@
+
+<<corwithingroup,echo=FALSE>>=
+n0 <- sum(group==0)
+x0 <- cor(cbind(propright[group==0],partpreds[group==0],freqpreds[group==0]))
+rsg0 <- cocor.dep.groups.overlap(x0[2,1],x0[3,1],x0[3,2],n0,test="meng1992")@meng1992 
+n1 <- sum(group==1)
+x1 <- cor(cbind(propright[group==1],partpreds[group==1],freqpreds[group==1]))
+rsg1 <- cocor.dep.groups.overlap(x1[2,1],x1[3,1],x1[3,2],n1,test="meng1992")@meng1992 
+
+n2 <- sum(group==2)
+x2 <- cor(cbind(propright[group==2],partpreds[group==2],freqpreds[group==2]))
+rsg2 <- cocor.dep.groups.overlap(x2[2,1],x2[3,1],x2[3,2],n2,test="meng1992")@meng1992 
+@
+
+
+<<setupvars,echo=FALSE>>=
+correct <- c(itemright)
+pred <- c(confpreds)
+cond <- rep(group,10)
+# Contrast 1 is correct v control
+# Contrast 2 is incorrect v control
+g12 <- g2 <- as.numeric(cond)
+cond <- as.factor(cond)
+g12[cond == 0] <- -2
+g12[cond != 0] <-  1
+g2[cond == 0] <- 0
+g2[cond == 1] <- 1
+g2[cond == 2] <- -1
+
+levels(cond) <- c("Control","Correct","Incorrect")
+
+item <- rep(1:10,each=nrow(itemright))
+partno <- rep(1:nrow(itemright),10)
+order <- scale(item) # try centering since it is confounded with the random var
+dm <- data.frame(list(partno,item,correct,pred,
+          cond,order,g12,g2))
+#dm <- dm[dm$item != 9,]
+names(dm) <- c("partno","item","correct","pred","cond","order","g12","g2")
+#dim(dm)
+#dm[500:510,]
+save(dm,file="dm.RData")
+@
+
+
+Do confident people answer more items correctly than those who are not confident, and does this varies by condition? The correlations for the two confidence measures with actual performance for the three conditions were calculated. For comparing the mean of the individual predictions with the actual number correct these were: 
+$r= \Sexpr{citcontrol}$, $r= \Sexpr{citjright}$, and $r= \Sexpr{citjwrong}$ for the control, justify-correct, and justify-incorrect conditions. The values comparing the set frequencies with the number accurate were: $r= \Sexpr{setcontrol}$, $r= \Sexpr{setjright}$, and $r= \Sexpr{setjwrong}$ for these conditions. These were compared for each condition using the procedure from \citet{MengEA1992}. None of these three comparisons were statistically significant: 
+$z = \Sexpr{sprintf("%0.3f",rsg0$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",rsg0$p.value))}$,
+$z = \Sexpr{sprintf("%0.3f",rsg1$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",rsg1$p.value))}$, and 
+$z = \Sexpr{sprintf("%0.3f",rsg2$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",rsg2$p.value))}$ for the three conditions. The correlations across conditions were tested using the procedure described in \citet{Fisher1925}. These were done for the two planned contrasts for comparing the mean of the individual estimates with the number correct (control v both justify conditions: 
+$z = \Sexpr{sprintf("%0.3f",c1pp$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",c1pp$p.value))}$,
+and justify correct v incorrect: 
+$z = \Sexpr{sprintf("%0.3f",c2pp$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",c2pp$p.value))}$, and comparing the set estimates with the number correct (control v both justify conditions: 
+$z = \Sexpr{sprintf("%0.3f",c1pf$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",c1pf$p.value))}$, and justify correct v incorrect: 
+$z = \Sexpr{sprintf("%0.3f",c2pf$statistic)}, p = \Sexpr{sub("0.",".",sprintf("%0.3f",c2pf$p.value))}$. These non-significant $p$-values are not adjusted for multiple comparisons. 
+
+
+
+
+<<runmodels,cache=TRUE,echo=FALSE,eval=TRUE,warning=FALSE,message=FALSE>>=
+m8 <- glmer(correct ~ pred + g12 + g2 + pred:g12 + pred:g2 + (1|partno) + (1|item),
+         family=binomial(link=logit),data=dm) 
+ciwald <- confint(m8,method="Wald")
+pts <- summary(m8)$coef
+@
+
+<<itemplots,fig.cap="The probability of a correct answer with the confidence rating for the three conditions.",fig.align="center",fig.height=4,out.height="4in",fig.width=5,out.width="5in",echo=FALSE,eval=FALSE>>=
+m9 <- glmer(correct ~ 0 + pred*as.factor(cond) + (1|partno) + (1|item),
+         family=binomial(link=logit),data=dm) 
+cf <- summary(m9)$coefficients[,1]
+step <- .001
+plotx <- seq(0,1,step)
+plotg0  <- rep("Control",each=length(seq(0,1,step)))
+plotg1  <- rep(1,each=length(seq(0,1,step)))
+plotg2  <- rep(2,each=length(seq(0,1,step)))
+plotControl <- inv.logit(cf[2] + cf[1]*plotx) 
+plotCorrect <- inv.logit(cf[3] + (cf[1]+cf[5])*plotx) 
+plotIncorrect <- inv.logit(cf[4] + (cf[1]+cf[6])*plotx) 
+plot(plotx*100,plotControl,col="white",ylim=c(0,1),las=1,ylab="Probability Accurate",
+             xlab="Confidence (0-100%)")
+lines(plotx*100,plotControl,col="black")
+text(66,.4,"Control",pos=4)
+lines(plotx*100,plotCorrect,col="black")
+text(7,.31,"Correct")
+lines(plotx*100,plotIncorrect,col="black")
+text(77,.7,"Incorrect",pos=2)
+@
+
+<<echo=FALSE>>=
+opts_chunk$set(cache.path = "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2\\cache")
+@
+
+<<modelcis,echo=FALSE,cache=TRUE,message=FALSE,warning=FALSE>>=
+finmod <- glmer(correct ~ pred*as.factor(cond) + (1|partno) + (1|item),
+       family=binomial(link=logit),data=dm) 
+
+#set.seed(322)
+#ciboot1 <- confint(m8,method="boot",boot.type="perc",nsim=100)
+#pp <- profile(m8, devtol=1e-0, which="beta_")
+#profile many warnings
+@
+
+We also examined these relations predicting the probability of a correct response at the trial level, using a cross-classified logistic model with random intercepts for the items and for the participants. The coefficient statistics for this model are shown in equation~\ref{eqn:coefs}. The two contrasts were the control (-2) versus the two justify conditions (+1) and between the correct (+1) and the incorrect (-1) justify conditions. The coefficient estimates for the fixed portion of the model, with 95\% Wald confidence intervals below the point estimates, are:
+<<echo=FALSE>>=
+xtab <- summary(finmod)$coefficients
+xtab <- cbind(xtab,ciwald[c(-1,-2),])
+@
+<<loadtabs,results='asis',echo=FALSE>>=
+library(xtable)
+@
+<<echo=FALSE>>=
+pt2 <- function(x) sprintf("%0.3f",x)
+ciwald <- apply(ciwald[3:8,],c(1,2),pt2)
+pts <- pt2(pts[,1])
+@
+
+\begin{equation} \label{eqn:coefs}
+\begin{split}
+\phantom{www} = 
+& \underset{(\Sexpr{ciwald[1,1]}, \; \Sexpr{ciwald[1,2]})}{\Sexpr{pts[1]}} + 
+\underset{(\Sexpr{ciwald[3,1]}, \; \Sexpr{ciwald[3,2]})}{\Sexpr{pts[3]}} \mathit{contr1}_{j} + 
+\underset{(\Sexpr{ciwald[4,1]}, \; \Sexpr{ciwald[4,2]})}{\Sexpr{pts[4]}} \mathit{contr2}_{j} + 
+\underset{(\Sexpr{ciwald[2,1]}, \; \Sexpr{ciwald[2,2]})}{\Sexpr{pts[2]}} \mathit{Confid}_{ij} \\
+& \underset{(\Sexpr{ciwald[5,1]}, \; \Sexpr{ciwald[5,2]})}{\Sexpr{pts[5]}} \mathit{contr1 \; by \; Confid}_{ij} +
+\underset{(\Sexpr{ciwald[6,1]}, \; \Sexpr{ciwald[6,2]})}{\Sexpr{pts[6]}} \mathit{contr2 \; by \; Confid}_{ij}  
+\end{split}
+\end{equation}
+
+\noindent These show that the largest differences were between the control and the two justify conditions, and the difference were more pronounced for low levels of confidence. 
+
+\section{Summary}
+
+{\color{red}When people self-reflect about their cognitions, whether directed towards reasons for why they were accurate or why they were inaccurate, they become less confident about their accuracy. This occurred for both item level confidence and ratings for the entire set of responses. That it lowered confidence when both prompted to search for accurate and inaccurate reasons, suggests these shifts are not due to demand characteristics, but that the act of justifying the response and any information retrieved lowers confidence. Different types of information may influence the confidence a person reports. Seeking metacognitive information implies that you may be either right or wrong. If you are highly certain, the act of seeking this information can lower over-confidence. }
+
+
+Metacognitive monitoring during test-taking is an important applied topic. Here, asking test-takers to justify their responses affects the confidence/accuracy relationship. Those in the justify conditions were less overconfident than those in the control condition, though they still showed some overconfidence.  Forcing additional real-time metacognitive processing improved their calibration for the math items used here.  No significant differences emerged depending on whether the person was asked to justify whether they might have been correct or incorrect. It appears that being asked to justify either of these causes the person to question the certainty of their belief. This lowered the confidence ratings. This made the confidence ratings less overconfident. It would be interesting to examine if these occurred in other contexts in education (e.g., essay questions), but also outside of an education context. For example, does asking people to justify why their opinion towards a politician may be too positive or too negative affect how strongly they hold these beliefs.
+
+The relationship between confidence and accuracy was examined in two ways. First, we examined the the relationships between proportion correct and the two aggregate confidence measures. These were correlated, about $r = .4-.5$, but there was no evidence for the condition affecting the size of these correlations. The second way was examining how the individual item confidence ratings predicted item accuracy. This relationship did vary by condition. The intercepts were higher for the justify conditions and their slopes were less than for the control condition. This was due to the justify prompt raising confidence judgments when the person is unsure, for the reasons discussed above. 
+
+It is important to understand how interventions designed to increase metacognitive processing during test-taking can influence decisions and subsequent achievement. Greater metacognitive accuracy is associated with better academic performance when assessed through retrospection \citep{HackerEA2008}. Research shows that better revision decisions are made when students are asked to stop and to rate how confident they are in real-time \citep{CouchmanEA2016}.  
+
+
+Self-reflection is an important aspect of metacognition. Thinking about the accuracy of a response increases the amount of metacognitive information, but not necessarily the diagnostic value of the information. It appears that within an assessment setting it does not help individuals predict whether they are likely to have answered a question correctly or not. Asking students to justify the accuracy of their responses may lessen their overconfidence but it does not appear likely that it will improve the diagnosticity of their confidence ratings.
+
+{\color{red}The main conclusion is that having students think about the accuracy of their answers can help them to align their confidence more with their accuracy. It is well established that self-testing helps students to learn better than many other ways in which students try to learn \citep[e.g.,][]{KarpickeRoediger2008,RoedigerKarpicke2006}. We encourage students, when self-testing, to consider why their responses may be right or wrong when studying. This will improve their calibration. The extra time to do this would mean this may be inappropriate for timed high-stakes tests. This is also applicable in other areas where overconfidence occurs. For example, for CEO overconfidence requiring key policy makers to justify their decisions could to more realistic appraisals of the outcomes of these decisions.}
+
+\bibliography{../../AllRefs}
+{\color{red}
+\begin{singlespacing}
+\vspace{-.2cm}
+\subsection{Math Items. The correct choice is shown in \textbf{bold}. Note: 95\% CIs found with \textsf{R}'s \texttt{prop.test} function.}
+
+\vspace{-.0cm}
+\footnotesize
+\begin{tabular}[b]{l c c b{6cm} c }
+Item  & \makecell{Proportion\\correct} & 95\% CI & \phantom{WWWWWl} Question & Answers \\ \hline
+\#1 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[1]))} & \Sexpr{cip(itemright[,1])} &  
+In the standard \emph{(x,y)} coordinate plane, what is the midpoint of the line segment that has endpoints \emph{(3,8)} and \emph{(1,-4)}? & \makecell{(-2,-12)\\(-1,-6)\\(11/2, -3/2)\\ \textbf{(2,2)}\\(4,-12)} \\ \hline
+\#2 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[2]))} & \Sexpr{cip(itemright[,2])} & What is the sum of the solutions of the 2 equations below? $8x =12$ (1.5) and $2y + 10 = 22 (6)$.
+ & \makecell{($2 \frac{2}{5}$)\\ ($ \mathbf{7 \frac{1}{2}}$)\\ 9 \\10\\$17 \frac{1}{2}$}  \\ \hline
+\#3 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[3]))} & \Sexpr{cip(itemright[,3])} & What is the value of the expression below? $ \Big \lvert \, \lvert -8+4 \rvert - \lvert 3 - 9 \rvert \, \Big \rvert$  & \makecell{-18 \\ -2 \\ 0 \\ \textbf{2} \\ 18} \\ \hline
+ \#4 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[4]))} & \Sexpr{cip(itemright[,4])} & In the standard $(x,y)$ coordinate plane, what is the slope of the line given by the equation $4x = 7y + 5$? & \makecell{$\frac{-4}{7}$\\ $\mathbf{\frac{4}{7}}$ \\ $\frac{7}{4}$\\ $4$\\ $7$}  \\ \hline
+ \#5 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[5]))} & \Sexpr{cip(itemright[,5])} & The lengths of the 2 legs of right triangle $\bigtriangleup ABC$ shown below are given in inches. The midpoint of $\overline{AB}$ is how many inches from $A$? (AC= 32, CB = 24, right triangle) &  \makecell[b]{16 \\ \textbf{20} \\ 21 \\ 28 \\ 40 }  \\ \hline
+ \#6 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[6]))} & \Sexpr{cip(itemright[,6])} & 8\% of 60 is $\frac{1}{5}$ of what number? & \makecell{0.96 \\ 12 \\ \textbf{24} \\ 240 \\ 3,750 }  \\ \hline
+ \#7 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[7]))} & \Sexpr{cip(itemright[,7])} & \Large{ $\frac{4.8 \times 10^{-7}}{1.6 \times 10^{-11}} = ?$} & \makecell{$\mathbf{3.0 \times 10^4}$ \\  $3.0 \times 10^{-4}$ \\ $3.0 \times 10^{-18}$ \\ $3.2 \times 10^{18}$ \\ $3.2 \times 10^4$ }  \\ \hline 
+ \#8 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[8]))} & \Sexpr{cip(itemright[,8])} & The number $1,001$ is the product of the prime numbers 7, 11, and 13. Knowing this, what is the prime factorization of 30,030? & 
+ \makecell[b]{$3 \cdot 7 \cdot 10 \cdot 13$ \\ $30 \cdot 7 \cdot 11 \cdot 13 $ \\ $2 \cdot 5 \cdot 7 \cdot 11 \cdot 13 $ \\
+ $3 \cdot 7 \cdot 10 \cdot 11 \cdot 13 $ \\ $ \mathbf{2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot 13} $}  \\ \hline
+ \#9 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[9]))} & \Sexpr{cip(itemright[,9])} & The list of numbers 41, 35, 30, X, Y, 15 has a median of 25. The mode of the list of numbers is 15. To the nearest whole number, what is the mean of the list? & 
+ \makecell[b]{20 \\ 25 \\ \textbf{26} \\ 27 \\ 30}  \\ \hline
+\#10 & \Sexpr{sub("0.",".",sprintf("%0.3f",mitemright[10]))} & \Sexpr{cip(itemright[,10])} & The 3rd and 4th terms of an arithmetic sequence are 13 and 18, respectively. What is the 50th term of the sequence? & 
+\makecell{\textbf{248} \\ 250 \\ 253 \\ 258 \\ 263} \\ \hline
+\end{tabular}
+\end{singlespacing}
+
+}
+
+\end{document}

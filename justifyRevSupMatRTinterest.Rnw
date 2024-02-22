@@ -1,0 +1,277 @@
+%\documentclass[man,hidelinks,floatsintext,mask]{apa7}
+%\documentclass[man,hidelinks,floatsintext]{apa7}
+\documentclass[doc,hidelinks,floatsintext]{apa7}
+%\documentclass[man,mask,hidelinks]{apa7}
+\usepackage[natbibapa]{apacite}
+%\usepackage{natbib}
+\bibliographystyle{apacite}
+\usepackage{enumitem}
+\usepackage[normalem]{ulem} 
+\usepackage{url}
+\usepackage{comment}
+\usepackage{makecell}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,fit,arrows.meta}
+\usetikzlibrary{shapes}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tabu, booktabs}
+\title{\textbf{Supplementary Materials for:} \\ \vspace{.3cm}
+Justifying responses affects the relationship \\ \vspace{.1cm} between confidence and accuracy }
+\shorttitle{Justifying Responses and Confidence}
+\author{Daniel B.~Wright \qquad Sarah M. Wolf{}f}
+\affiliation{University of Nevada at Las Vegas}
+\authornote{\hspace{-30pt} Email: daniel.wright@unlv.edu or dbrookswr@gmail.com. }
+\abstract{This document goes through some additional analyses and shows the \textsf{R} code. These are for the response times for math items and for the interest questions, both of these by the three conditions. We had no predictions for these differing by condition. We also show the key for the items. This document is written in \textbf{knitr} \citep{knitr}, weaving together \LaTeX{} and \textsf{R}. The code for all analyses in the paper can be found in the \textsf{rnw} file associated with that, which is also on the GitHub page.}
+\begin{document}
+\maketitle
+
+<<echo=TRUE,echo=FALSE>>=
+opts_chunk$set(cache.path = 
+    "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2\\cache\\")
+@
+
+The data are loaded. These are from a file that has been cleaned from a Qualtrics data file with identifying information removed. This was run in the same session as another (unpublished) study to ensure no one completed both. The duplicate IP address exclusion was done for the whole session and was done before the data object, below, was created.
+<<loadPackages,echo=TRUE,message=FALSE>>=
+# This is where file located on computer
+setwd( "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2")
+load("justify.RData")
+@
+
+
+An object is created for the times for answering the mathematics items, and those faster than, on average, 10s are removed.
+
+<<removefast,message=FALSE,echo=TRUE>>=
+times <- with(justify,cbind(Jtime05_Page.Submit,Jtime07_Page.Submit,
+  Jtime08_Page.Submit,Jtime09_Page.Submit,Jtime10_Page.Submit,
+  Jtime12_Page.Submit,Jtime13_Page.Submit,Jtime16_Page.Submit,
+  Jtime26_Page.Submit,Jtime27_Page.Submit))
+totqtimes <- apply(times,1,sum)
+tt <- cbind(times,totqtimes)
+thresh <- 100
+outfortime <- table(totqtimes < thresh)
+justify <- justify[totqtimes > thresh,]
+post <- table(justify$justify)
+times <- times[totqtimes > thresh,]
+totqtimes <- totqtimes[totqtimes > thresh]
+# justify 0 is control, 1 is correct, and 2 is incorrect
+@
+
+
+This is a set of packages downloaded. Not all are used here. Functions for the traditional upper and lower bounds for the 95\% confidence intervals are also created.
+
+<<loadpcks,echo=TRUE,message=FALSE,warning=FALSE>>=
+library(car)
+library(lme4)
+library(mirt)
+library(xtable)
+library(splines)
+library(Hmisc)
+library(boot)
+library(pwr)
+library(psych)
+library(EnvStats)
+lb <- function(x,lev=.95)
+  t.test(x,conf.level=lev)$conf.int[1]
+ub <- function(x,lev=.95)
+  t.test(x,conf.level=lev)$conf.int[2]
+@
+
+Here is the key.
+
+<<key,echo=FALSE,eval=FALSE>>=
+key <- c("D","B","D","B","B","C","A","E","C","A")
+@
+
+
+
+<<echo=FALSE>>=
+opts_chunk$set(cache.path = "C:\\Users\\wrighd12\\Documents\\MetaCog\\Replace2\\cache")
+@
+
+
+
+\subsection{Response times by condition}
+
+We were asked by a reviewer if the response times varied by condition. The response times were skewed, and this was greatly lessened by using logged response times as shown below. Issues with the traditional standard error of this measure is discussed in \citet{WrightHerrington2011}. We report geometric means along with arithmetic means for descriptive statistics. Hypothesis testing was done with the logged response times and no significant differences emerged.
+
+<<timebygroup,message=FALSE>>=
+library(e1071)
+par(mfrow=c(2,2))
+hist(totqtimes)
+qqnorm(totqtimes);qqline(totqtimes)
+skewness(totqtimes)
+hist(log(totqtimes))
+qqnorm(log(totqtimes));qqline(log(totqtimes))
+skewness(log(totqtimes))
+@
+
+The output for the geometric means betwen conditions. This shows that they are nonsignificant for the two contrasts, and the oneway anova.
+<<>>=
+group <- justify$group <- as.factor(justify$justify) #same name
+g12 <- group != 0
+g2 <- group == 2
+summary(lm(log(totqtimes) ~ g12 + g2))
+tapply(totqtimes,group,mean)
+geomean <- function(x) exp(mean(log(x)))
+tapply(totqtimes,group,geomean)
+oneway.test(log(totqtimes)~group)
+@
+
+This was repeated using multilevel \citep[cross-classified with randon intercepts for items and people, see][]{WrightLondon2009multi} models with the individual trial data, which are more skewed as expected. The same basic finding emerged: no significant effects detected. 
+
+<<mltime,cache=FALSE,echo=TRUE,eval=TRUE>>=
+timeVector <- c(times)
+itemno <- rep(1:10,each=nrow(times))
+subno <- rep(1:nrow(times),10)
+groupno <- rep(group,10)
+group12 <- groupno != 0
+group2 <- groupno == 2
+skewness(timeVector); skewness(log(timeVector))
+tapply(timeVector,groupno,mean)
+tapply(timeVector,groupno,geomean)
+m0 <- lmer(timeVector ~ 1 + (1|itemno) + (1|subno), REML=FALSE)
+m1 <- update(m0, .~. + group12)
+m2 <- update(m1, .~. + group2)
+m2a <- update(m0, .~. + groupno)
+anova(m0,m1,m2,m2a)
+anova(m0,m2a)
+@
+
+
+\noindent Reminder: justify 0 is control, 1 is correct, and 2 is incorrect.
+
+
+<<echo=TRUE>>=
+group12 <- group != 0
+group2 <- group == 2
+@
+
+\subsection{Interest Questions}
+
+\noindent The interest questions are:
+\begin{enumerate}
+\item We are interested in how much people think about how they are answering questions, called metacognition, during quizzes. Examples including thinking why you believe an individual alternative is right or wrong, and thinking about how to answer a question.  Using the following scale, how much metacognitive thinking were you doing during the task? (0 to 100, hardly any \dots{} a lot)
+\item How interested are you in mathematics? (0 -- 100, not interested \dots{} very interested)
+\item Some people feel like taking a quiz helps them to learn a topic. Some people do not feel this. Do you feel taking this short quiz helped with your mathematical knowledge?  (0--100, Knowledge decreased \dots{}  no effect \dots{}   Knowledge increased)
+\end{enumerate}
+
+<<echo=TRUE>>=
+attqs <- with(justify,cbind(Q3027_1,Q3029_1,Q3031_1,Q3033_1))
+attmci <- matrix(ncol=3,nrow=3*4)
+for (i in 1:4){
+  attmci[3*i - 2,] <- tapply(attqs[,i],group,mean)
+  attmci[3*i - 1,] <- tapply(attqs[,i],group,lb)
+  attmci[3*i - 0,] <- tapply(attqs[,i],group,ub)
+  }
+vals <- cor(attqs)[lower.tri(cor(attqs),diag=FALSE)]
+
+ovals <- matrix(ncol=3,nrow=3)
+odata <- rowMeans(attqs)
+ovals[1,] <- tapply(odata,group,mean)
+ovals[2,] <- tapply(odata,group,lb)
+ovals[3,] <- tapply(odata,group,ub)
+@
+
+
+Participants were asked four 0--100 attitude questions: how accurately the assessment measures your skills, how much metacognition were you doing, how interested you are in mathematics, and did the quiz help your understanding. These questions were included for exploratory purposes and our analytic approach reflects this. The means and 95\% confidence intervals for the three groups are shown in Table~\ref{tab:attmeans}. The responses on these variables were correlated between $r = \Sexpr{sub("0.",".",sprintf("%0.3f",min(vals)))}$ and $r = \Sexpr{sub("0.",".",sprintf("%0.3f",max(vals)))}$, which accounts for why these show a similar pattern. 
+
+
+\begin{table} \caption{Means and 95\% confidence intervals for the four 0--100 rating scale questions.} \label{tab:attmeans}
+\centering
+\begin{tabular}{m{3cm} l c c c}
+&& \multicolumn{3}{c}{Condition} \\ \cline{3-5}
+&& Control & Correct & Incorrect \\ \hline
+\multirow{2}{3cm}{Assessment is accurate} & Mean 
+& \Sexpr{sprintf("%0.3f",attmci[1,1])} & \Sexpr{sprintf("%0.3f",attmci[1,2])} & \Sexpr{sprintf("%0.3f",attmci[1,3])}\\
+& 95\% CI 
+& (\Sexpr{sprintf("%0.3f",attmci[2,1])}, \Sexpr{sprintf("%0.3f",attmci[3,1])})
+& (\Sexpr{sprintf("%0.3f",attmci[2,2])}, \Sexpr{sprintf("%0.3f",attmci[3,2])})
+& (\Sexpr{sprintf("%0.3f",attmci[2,3])}, \Sexpr{sprintf("%0.3f",attmci[3,3])}) \\
+\multirow{2}{3cm}{Metacognition} & Mean 
+& \Sexpr{sprintf("%0.3f",attmci[4,1])} & \Sexpr{sprintf("%0.3f",attmci[4,2])} & \Sexpr{sprintf("%0.3f",attmci[4,3])}\\
+& 95\% CI 
+& (\Sexpr{sprintf("%0.3f",attmci[5,1])}, \Sexpr{sprintf("%0.3f",attmci[6,1])})
+& (\Sexpr{sprintf("%0.3f",attmci[5,2])}, \Sexpr{sprintf("%0.3f",attmci[6,2])})
+& (\Sexpr{sprintf("%0.3f",attmci[5,3])}, \Sexpr{sprintf("%0.3f",attmci[6,3])}) \\
+\multirow{2}{3cm}{Interest} & Mean 
+& \Sexpr{sprintf("%0.3f",attmci[7,1])} & \Sexpr{sprintf("%0.3f",attmci[7,2])} & \Sexpr{sprintf("%0.3f",attmci[7,3])}\\
+& 95\% CI 
+& (\Sexpr{sprintf("%0.3f",attmci[8,1])}, \Sexpr{sprintf("%0.3f",attmci[9,1])})
+& (\Sexpr{sprintf("%0.3f",attmci[8,2])}, \Sexpr{sprintf("%0.3f",attmci[9,2])})
+& (\Sexpr{sprintf("%0.3f",attmci[8,3])}, \Sexpr{sprintf("%0.3f",attmci[9,3])}) \\
+\multirow{2}{3cm}{Quiz helps understanding} & Mean 
+& \Sexpr{sprintf("%0.3f",attmci[10,1])} & \Sexpr{sprintf("%0.3f",attmci[10,2])} & \Sexpr{sprintf("%0.3f",attmci[10,3])}\\
+& 95\% CI 
+& (\Sexpr{sprintf("%0.3f",attmci[11,1])}, \Sexpr{sprintf("%0.3f",attmci[12,1])})
+& (\Sexpr{sprintf("%0.3f",attmci[11,2])}, \Sexpr{sprintf("%0.3f",attmci[12,2])})
+& (\Sexpr{sprintf("%0.3f",attmci[11,3])}, \Sexpr{sprintf("%0.3f",attmci[12,3])}) \\
+\hline
+\end{tabular}
+\end{table}
+
+
+<<echo=TRUE>>=
+vals <- matrix(ncol=3,nrow=5)
+
+for (i in 1:ncol(attqs))
+  vals[i,] <-  c(pairwise.t.test(attqs[,i],group)$p.value)[c(1,2,4)]
+vals[5,] <- c(pairwise.t.test(rowMeans(attqs),group)$p.value)[c(1,2,4)]
+@
+
+As these are exploratory analyses all three pairwise $t$-tests were were conducted for each question and then the $p$-values were adjusted using Holm's procedure \citep{Holm1979}. The only difference that was statistically significant was  participants in the justify correct condition gave lower ratings for the perception that the assessment was accurate than participants in the control condition. 
+
+
+<<cohensd,echo=TRUE>>=
+cd <- matrix(ncol=3,nrow=5*3)
+cd[1,] <- cohen.d(attqs[group == 0 | group == 1,1],
+                  group[group == 0 | group == 1])$cohen.d
+cd[2,] <- cohen.d(attqs[group == 0 | group == 2,1],
+                  group[group == 0 | group == 2])$cohen.d
+cd[3,] <- cohen.d(attqs[group == 1 | group == 2,1],
+                  group[group == 1 | group == 2])$cohen.d
+cd[4,] <- cohen.d(attqs[group == 0 | group == 1,2],
+                  group[group == 0 | group == 1])$cohen.d
+cd[5,] <- cohen.d(attqs[group == 0 | group == 2,2],
+                  group[group == 0 | group == 2])$cohen.d
+cd[6,] <- cohen.d(attqs[group == 1 | group == 2,2],
+                  group[group == 1 | group == 2])$cohen.d
+cd[7,] <- cohen.d(attqs[group == 0 | group == 1,3],
+                  group[group == 0 | group == 1])$cohen.d
+cd[8,] <- cohen.d(attqs[group == 0 | group == 2,3],
+                  group[group == 0 | group == 2])$cohen.d
+cd[9,] <- cohen.d(attqs[group == 1 | group == 2,3],
+                  group[group == 1 | group == 2])$cohen.d
+cd[10,] <- cohen.d(attqs[group == 0 | group == 1,4],
+                  group[group == 0 | group == 1])$cohen.d
+cd[11,] <- cohen.d(attqs[group == 0 | group == 2,4],
+                   group[group == 0 | group == 2])$cohen.d
+cd[12,] <- cohen.d(attqs[group == 1 | group == 2,4],
+                   group[group == 1 | group == 2])$cohen.d
+cd[13,] <- cohen.d(rowMeans(attqs[group == 0 | group == 1,]),
+                   group[group == 0 | group == 1])$cohen.d
+cd[14,] <- cohen.d(rowMeans(attqs[group == 0 | group == 2,]),
+                   group[group == 0 | group == 2])$cohen.d
+cd[15,] <- cohen.d(rowMeans(attqs[group == 1 | group == 2,]),
+                   group[group == 1 | group == 2])$cohen.d
+colnames(cd) <- c("lb","d","ub")
+rownames(cd) <- 
+  matrix(t(outer(paste0("q",c(1:4,"tot")),c("0v1","0v2","1v2"),paste)))
+@
+
+<<results='asis'>>=
+print.xtable(xtable(cd,caption="The 95\\% confidence intervals for Cohen's $d$ 
+       for the pairwise comparisons for the interest questions. 
+       The first 12 rows are for the four questions, the final
+       3 for the sum of these responses. These are not making any adjustment
+       for there being multiple comparisons. "),hline.after=c(-1,0,12,15))
+@
+\bibliography{../../AllRefs}
+\end{document}
+
